@@ -6,10 +6,10 @@ import Todo from './Todo';
 const TodoList = (props) => {
 	return (
 		<div className="todo-array">
-			Todo List:{' '}
-			{props.todos.map((item) => {
-				console.log('To do array :', item);
-			})}
+			Todo List:
+			{props.todos.map((item) => (
+				<Todo key={item.id} item={item.task} />
+			))}
 		</div>
 	);
 };
