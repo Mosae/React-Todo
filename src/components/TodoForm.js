@@ -9,7 +9,11 @@ class TodoForm extends React.Component {
 		};
 	}
 	render() {
-		return <div>hi</div>;
+		return (
+			<form>
+				<input type="text" />
+			</form>
+		);
 	}
 }
 
