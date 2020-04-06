@@ -33,12 +33,24 @@ class App extends React.Component {
 		};
 	}
 
+	addChore = (e, chore) => {
+		e.preventDefault();
+		const newChore = {
+			task: chore,
+			id: Math.random(),
+			completed: false,
+		};
+		this.setState({
+			todos: [...this.state.todos, newChore],
+		});
+	};
+
 	render() {
 		return (
 			<div>
 				<h2>To Do List: </h2>
 				<Todo todos={this.state.todos} />
-				<TodoForm />
+				<TodoForm addChore={this.addChore} />
 				<TodoList todos={this.state.todos} />
 			</div>
 		);
