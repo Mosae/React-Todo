@@ -34,7 +34,7 @@ class App extends React.Component {
 		return (
 			<div>
 				<h2>To Do List: </h2>
-				<Todo todoData={this.state.todos} />
+				<Todo todos={this.state.todos} />
 			</div>
 		);
 	}
