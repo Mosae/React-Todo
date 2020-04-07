@@ -24,6 +24,7 @@ class TodoForm extends React.Component {
 				<input
 					type="text"
 					onChange={this.handleChanges}
+					task="chore"
 					//value={this.state.chore}
 				/>
 				<button>Add +</button>

@@ -35,8 +35,9 @@ class App extends React.Component {
 
 	addChore = (e, chore) => {
 		e.preventDefault();
+		console.log(chore);
 		const newChore = {
-			task: chore,
+			task: chore + 'new one',
 			id: Math.random(),
 			completed: false,
 		};
@@ -50,6 +51,7 @@ class App extends React.Component {
 			<div>
 				<h2>To Do List: </h2>
 				<Todo todos={this.state.todos} />
+				<h2>List of chores</h2>
 				<TodoForm addChore={this.addChore} />
 				<TodoList todos={this.state.todos} />
 			</div>
