@@ -44,6 +44,9 @@ class App extends React.Component {
 			todos: [...this.state.todos, newChore],
 		});
 	};
+	toggleChore = (choreId) => {
+		console.log(choreId);
+	};
 
 	render() {
 		return (
@@ -52,7 +55,7 @@ class App extends React.Component {
 				<Todo todos={this.state.todos} />
 				<h2>List of chores</h2>
 				<TodoForm addChore={this.addChore} />
-				<TodoList todos={this.state.todos} />
+				<TodoList todos={this.state.todos} toggleChore={this.toggleChore} />
 			</div>
 		);
 	}
