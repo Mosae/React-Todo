@@ -46,6 +46,17 @@ class App extends React.Component {
 	};
 	toggleChore = (choreId) => {
 		console.log(choreId);
+
+		this.setState({
+			todos: this.state.todos.map((item) => {
+				if (choreId === item.id) {
+					return {
+						...item,
+						completed: !item.completed,
+					};
+				}
+			}),
+		});
 	};
 
 	render() {
@@ -53,7 +64,6 @@ class App extends React.Component {
 			<div>
 				<h2>To Do List: </h2>
 				<Todo todos={this.state.todos} />
-				<h2>List of chores</h2>
 				<TodoForm addChore={this.addChore} />
 				<TodoList todos={this.state.todos} toggleChore={this.toggleChore} />
 			</div>
