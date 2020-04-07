@@ -37,24 +37,25 @@ class App extends React.Component {
 		e.preventDefault();
 		const newChore = {
 			task: item,
-			id: Math.random(),
+			id: Date.now(),
 			completed: false,
 		};
 		this.setState({
 			todos: [...this.state.todos, newChore],
 		});
 	};
-	toggleChore = (choreId) => {
-		console.log(choreId);
 
+	toggleItem = (itemId) => {
+		console.log(itemId);
 		this.setState({
 			todos: this.state.todos.map((item) => {
-				if (choreId === item.id) {
+				if (itemId === item.id) {
 					return {
 						...item,
 						completed: !item.completed,
 					};
 				}
+				return item;
 			}),
 		});
 	};
@@ -63,9 +64,9 @@ class App extends React.Component {
 		return (
 			<div>
 				<h2>To Do List: </h2>
-				<Todo todos={this.state.todos} />
+				{/* <Todo todos={this.state.todos} toggleItem={this.toggleItem} /> */}
 				<TodoForm addChore={this.addChore} />
-				<TodoList todos={this.state.todos} toggleChore={this.toggleChore} />
+				<TodoList todos={this.state.todos} toggleItem={this.toggleItem} />
 			</div>
 		);
 	}
