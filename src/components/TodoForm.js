@@ -16,7 +16,7 @@ class TodoForm extends React.Component {
 	choreSubmit = (e) => {
 		e.preventDefault();
 		this.setState({ task: ' ' });
-		this.props.addChore(e, this.state.chore);
+		this.props.addChore(e, this.state.task);
 	};
 	render() {
 		return (
@@ -24,8 +24,8 @@ class TodoForm extends React.Component {
 				<input
 					type="text"
 					onChange={this.handleChanges}
-					task="new task"
-					//value={this.state.chore}
+					name="task"
+					value={this.state.chore}
 				/>
 				<button>Add +</button>
 				<button>Clear Complete</button>

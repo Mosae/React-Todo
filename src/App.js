@@ -33,11 +33,10 @@ class App extends React.Component {
 		};
 	}
 
-	addChore = (e, chore) => {
+	addChore = (e, item) => {
 		e.preventDefault();
-		console.log(chore);
 		const newChore = {
-			task: chore + 'new one',
+			task: item,
 			id: Math.random(),
 			completed: false,
 		};
