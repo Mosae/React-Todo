@@ -13,22 +13,21 @@ class TodoForm extends React.Component {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
-	choreSubmit = (e) => {
+	submitItem = (e) => {
 		e.preventDefault();
-		this.setState({ task: ' ' });
-		this.props.addChore(e, this.state.task);
+		this.setState({ item: '' });
+		this.props.addItem(e, this.state.item);
 	};
 	render() {
 		return (
-			<form onSubmit={this.choreSubmit}>
+			<form onSubmit={this.submitItem}>
 				<input
 					type="text"
+					value={this.state.item}
+					name="item"
 					onChange={this.handleChanges}
-					name="task"
-					value={this.state.chore}
 				/>
-				<button>Add +</button>
-				<button>Clear Complete</button>
+				<button>Add</button>
 			</form>
 		);
 	}

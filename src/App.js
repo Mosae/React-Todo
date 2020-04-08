@@ -1,5 +1,5 @@
 import React from 'react';
-import Todo from './components/Todo';
+
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 
@@ -17,15 +17,6 @@ const todos = [
 ];
 
 class App extends React.Component {
-	// you will need a place to store your state in this component.
-	// design `App` to be the parent component of your application.
-	// this component is going to take care of state, and any change handlers you need to work with your state
-
-	//MVP: Inut field
-	// add button
-	// render inputs when add button is clicked
-	//Completed task
-	// clear completed
 	constructor() {
 		super();
 		this.state = {
@@ -33,26 +24,29 @@ class App extends React.Component {
 		};
 	}
 
-	addChore = (e, item) => {
+	addItem = (e, item) => {
 		e.preventDefault();
-		const newChore = {
-			task: item,
+		const newItem = {
+			name: item,
 			id: Date.now(),
 			completed: false,
 		};
 		this.setState({
-			todos: [...this.state.todos, newChore],
+			todos: [...this.state.todos, newItem],
 		});
 	};
 
 	toggleItem = (itemId) => {
 		console.log(itemId);
+		// map over array
+		// when we find the item we clicked, toggle the purchased field
+		// otherwise return the item untouched
 		this.setState({
 			todos: this.state.todos.map((item) => {
 				if (itemId === item.id) {
 					return {
 						...item,
-						completed: !item.completed,
+						purchased: !item.purchased,
 					};
 				}
 				return item;
@@ -60,13 +54,27 @@ class App extends React.Component {
 		});
 	};
 
+	clearPurchased = (e) => {
+		e.preventDefault();
+		// if item is purchased (item.purchased is true) then filter out
+		this.setState({
+			todos: this.state.todos.filter((item) => !item.purchased),
+		});
+	};
+
 	render() {
+		console.log('rendering...');
 		return (
-			<div>
-				<h2>To Do List: </h2>
-				{/* <Todo todos={this.state.todos} toggleItem={this.toggleItem} /> */}
-				<TodoForm addChore={this.addChore} />
-				<TodoList todos={this.state.todos} toggleItem={this.toggleItem} />
+			<div className="App">
+				<div className="header">
+					<h1>Todo List</h1>
+					<TodoForm addItem={this.addItem} />
+				</div>
+				<TodoList
+					todos={this.state.todos}
+					toggleItem={this.toggleItem}
+					clearPurchased={this.clearPurchased}
+				/>
 			</div>
 		);
 	}
