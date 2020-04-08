@@ -2,6 +2,7 @@ import React from 'react';
 
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
+import './components/Todo.css';
 
 const todos = [
 	{
@@ -39,14 +40,14 @@ class App extends React.Component {
 	toggleItem = (itemId) => {
 		console.log(itemId);
 		// map over array
-		// when we find the item we clicked, toggle the purchased field
+		// when we find the item we clicked, toggle the completed field
 		// otherwise return the item untouched
 		this.setState({
 			todos: this.state.todos.map((item) => {
 				if (itemId === item.id) {
 					return {
 						...item,
-						purchased: !item.purchased,
+						completed: !item.completed,
 					};
 				}
 				return item;
@@ -54,11 +55,11 @@ class App extends React.Component {
 		});
 	};
 
-	clearPurchased = (e) => {
+	clearCompleted = (e) => {
 		e.preventDefault();
-		// if item is purchased (item.purchased is true) then filter out
+		// if item is completed (item.completed is true) then filter out
 		this.setState({
-			todos: this.state.todos.filter((item) => !item.purchased),
+			todos: this.state.todos.filter((item) => !item.completed),
 		});
 	};
 
@@ -73,7 +74,7 @@ class App extends React.Component {
 				<TodoList
 					todos={this.state.todos}
 					toggleItem={this.toggleItem}
-					clearPurchased={this.clearPurchased}
+					clearCompleted={this.clearCompleted}
 				/>
 			</div>
 		);
